@@ -221,17 +221,15 @@
     <script>
       const check_btn = document.querySelector(".check-btn");
       const registrationInput = document.querySelector("#regNo");
-      function toggleClass() {
+      function displayForm() {
         registrationInput.classList.toggle("displayNone");
       }
 
-      check_btn.addEventListener("click", toggleClass);
+      check_btn.addEventListener("click", displayForm);
     </script>
 
     <script>
-      const signed_user =
-        localStorage.getItem("user") &&
-        JSON.parse(localStorage.getItem("user"));
+      const signed_user = localStorage.getItem("user");
 
       const logout_btn = document.querySelector("#logout-btn");
       const login_btn = document.querySelector("#login-btn");
@@ -244,6 +242,10 @@
         login_btn.classList.toggle("displayNone");
         logout_btn.classList.toggle("displayNone");
       }
+      logout_btn.addEventListener("click", () => {
+        localStorage.clear();
+        window.location.href = "/";
+      });
     </script>
   </body>
 </html>
